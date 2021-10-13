@@ -4,7 +4,11 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-let teamArray = [];
+let teamArray = [
+    managerArray = [],
+    engineerArray = [],
+    internArray = []
+];
 
 const managerQuestions = [
     {
@@ -97,7 +101,7 @@ function managerPrompt() {
     inquirer.prompt(managerQuestions)
         .then(function generateManager(data) {
             const newManager = new Manager(data.name, data.id, data.email, data.office);
-            teamArray.push(newManager);
+            managerArray.push(newManager);
             console.log(teamArray);
             if (data.member === 'Engineer') {
                 engineerPrompt();
@@ -114,7 +118,7 @@ function engineerPrompt() {
     inquirer.prompt(engineerQuestions)
         .then(function generateEngineer(data) {
             const newEngineer = new Engineer(data.name, data.id, data.email, data.github);
-            teamArray.push(newEngineer);
+            engineerArray.push(newEngineer);
             console.log(teamArray);
             if (data.member === 'Engineer') {
                 engineerPrompt();
@@ -131,7 +135,7 @@ function internPrompt() {
     inquirer.prompt(internQuestions)
         .then(function generateIntern(data) {
             const newIntern = new Intern(data.name, data.id, data.email, data.school);
-            teamArray.push(newIntern);
+            internArray.push(newIntern);
             console.log(teamArray);
             if (data.member === 'Engineer') {
                 engineerPrompt();
@@ -145,7 +149,68 @@ function internPrompt() {
 };
 
 function renderHTML() {
+    // for loop to go through array and create a new html based on job title
+    let finalCards = "";
+    
+    for (let i = 0; i < managerArray.length; i++) {
+        finalCards += managerCard(managerArray[i]);
+    };
+
+    for (let i = 0; i < engineerArray.length; i++) {
+        finalCards += engineerCard(engineerArray[i]);
+    };
+
+    for (let i = 0; i < internArray.length; i++) {
+        finalCards += internCard(internArray[i]);
+    };
+
+    console.log(finalCards);
     console.log('HTML rendered!');
 };
+
+// html card for manager
+function managerCard(data) {
+    return `<div class="card bg-primary text-white col-3">
+    <div class="card-header bg-primary">
+      <p>${data.name}</p>
+      <p>Manager</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${data.id}</li>
+      <li class="list-group-item">${data.email}</li>
+      <li class="list-group-item">${data.office}</li>
+    </ul>
+    </div>`
+}
+
+// html card for engineer
+function engineerCard(data) {
+    return `<div class="card bg-primary text-white col-3">
+    <div class="card-header bg-primary">
+      <p>${data.name}</p>
+      <p>Engineer</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${data.id}</li>
+      <li class="list-group-item">${data.email}</li>
+      <li class="list-group-item">${data.github}</li>
+    </ul>
+    </div>`
+}
+
+// html card for intern
+function internCard(data) {
+    return `<div class="card bg-primary text-white col-3">
+    <div class="card-header bg-primary">
+      <p>${data.name}</p>
+      <p>Intern</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${data.id}</li>
+      <li class="list-group-item">${data.email}</li>
+      <li class="list-group-item">${data.school}</li>
+    </ul>
+    </div>`
+}
 
 managerPrompt();
