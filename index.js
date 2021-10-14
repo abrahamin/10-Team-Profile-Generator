@@ -148,7 +148,38 @@ function internPrompt() {
         .catch((err) => console.error(err))
 };
 
-function renderHTML() {
+function renderHTML(finalCards) {
+    fs.writeFile ('./dist/index.html', writeHTML(finalCards), (err) =>
+    err ? console.log(err) : console.log('HTML rendered!'))
+}
+
+function writeHTML() {
+    return `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Profile Generator</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+        <link rel="stylesheet" href="../src/style.css">
+    </head>
+    <body>
+        <header class="jumbotron bg-danger text-white text-center">
+            <div class="d-inline container">
+              <h1 class="display-1">My Team</h1>
+            </div>
+        </header>
+        <main class="container">
+            <section class="row justify-content-center">
+                ${renderCards()}
+            </section>
+        </main>
+    </body>
+    </html>`
+}
+
+function renderCards() {
     // for loop to go through array and create a new html based on job title
     let finalCards = "";
     
@@ -164,53 +195,58 @@ function renderHTML() {
         finalCards += internCard(internArray[i]);
     };
 
-    console.log(finalCards);
-    console.log('HTML rendered!');
-};
+    return finalCards;
+}
 
 // html card for manager
 function managerCard(data) {
-    return `<div class="card bg-primary text-white col-3">
-        <div class="card-header bg-primary">
-            <p>${data.getName()}</p>
-            <p>${data.getRole()}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${data.getId()}</li>
-            <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
-            <li class="list-group-item">Office: ${data.getOffice()}</li>
-        </ul>
-    </div>`
+    return `
+                <div class="card bg-primary text-white col-3">
+                    <div class="card-header bg-primary">
+                        <p>${data.getName()}</p>
+                        <p>${data.getRole()}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${data.getId()}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
+                        <li class="list-group-item">Office: ${data.getOffice()}</li>
+                    </ul>
+                </div>
+`
 }
 
 // html card for engineer
 function engineerCard(data) {
-    return `<div class="card bg-primary text-white col-3">
-        <div class="card-header bg-primary">
-            <p>${data.getName()}</p>
-            <p>${data.getRole()}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${data.getId()}</li>
-            <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
-            <li class="list-group-item">GitHub: <a href="https://github.com/${data.getGithub()}">${data.getGithub()}</a></li>
-        </ul>
-    </div>`
+    return `
+                <div class="card bg-primary text-white col-3">
+                    <div class="card-header bg-primary">
+                        <p>${data.getName()}</p>
+                        <p>${data.getRole()}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${data.getId()}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
+                        <li class="list-group-item">GitHub: <a href="https://github.com/${data.getGithub()}">${data.getGithub()}</a></li>
+                    </ul>
+                </div>
+`
 }
 
 // html card for intern
 function internCard(data) {
-    return `<div class="card bg-primary text-white col-3">
-        <div class="card-header bg-primary">
-            <p>${data.getName()}</p>
-            <p>${data.getRole()}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${data.getId()}</li>
-            <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
-            <li class="list-group-item">School: ${data.getSchool()}</li>
-        </ul>
-    </div>`
+    return `
+                <div class="card bg-primary text-white col-3">
+                    <div class="card-header bg-primary">
+                        <p>${data.getName()}</p>
+                        <p>${data.getRole()}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID: ${data.getId()}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
+                        <li class="list-group-item">School: ${data.getSchool()}</li>
+                    </ul>
+                </div>
+`
 }
 
 managerPrompt();
