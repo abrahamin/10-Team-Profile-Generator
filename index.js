@@ -172,13 +172,13 @@ function renderHTML() {
 function managerCard(data) {
     return `<div class="card bg-primary text-white col-3">
     <div class="card-header bg-primary">
-      <p>${data.name}</p>
-      <p>Manager</p>
+      <p>${data.getName()}</p>
+      <p>${data.getRole()}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${data.id}</li>
-      <li class="list-group-item">${data.email}</li>
-      <li class="list-group-item">${data.office}</li>
+      <li class="list-group-item">${data.getId()}</li>
+      <li class="list-group-item">${data.getEmail()}</li>
+      <li class="list-group-item">${data.getOffice()}</li>
     </ul>
     </div>`
 }
@@ -187,13 +187,13 @@ function managerCard(data) {
 function engineerCard(data) {
     return `<div class="card bg-primary text-white col-3">
     <div class="card-header bg-primary">
-      <p>${data.name}</p>
-      <p>Engineer</p>
+      <p>${data.getName()}</p>
+      <p>${data.getRole()}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${data.id}</li>
-      <li class="list-group-item">${data.email}</li>
-      <li class="list-group-item">${data.github}</li>
+      <li class="list-group-item">${data.getId()}</li>
+      <li class="list-group-item">${data.getEmail()}</li>
+      <li class="list-group-item">${data.getGithub()}</li>
     </ul>
     </div>`
 }
@@ -202,13 +202,13 @@ function engineerCard(data) {
 function internCard(data) {
     return `<div class="card bg-primary text-white col-3">
     <div class="card-header bg-primary">
-      <p>${data.name}</p>
-      <p>Intern</p>
+      <p>${data.getName()}</p>
+      <p>${data.getRole()}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">${data.id}</li>
-      <li class="list-group-item">${data.email}</li>
-      <li class="list-group-item">${data.school}</li>
+      <li class="list-group-item">${data.getId()}</li>
+      <li class="list-group-item">${data.getEmail()}</li>
+      <li class="list-group-item">${data.getSchool()}</li>
     </ul>
     </div>`
 }
