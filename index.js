@@ -171,45 +171,45 @@ function renderHTML() {
 // html card for manager
 function managerCard(data) {
     return `<div class="card bg-primary text-white col-3">
-    <div class="card-header bg-primary">
-      <p>${data.getName()}</p>
-      <p>${data.getRole()}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">${data.getId()}</li>
-      <li class="list-group-item">${data.getEmail()}</li>
-      <li class="list-group-item">${data.getOffice()}</li>
-    </ul>
+        <div class="card-header bg-primary">
+            <p>${data.getName()}</p>
+            <p>${data.getRole()}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${data.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
+            <li class="list-group-item">Office: ${data.getOffice()}</li>
+        </ul>
     </div>`
 }
 
 // html card for engineer
 function engineerCard(data) {
     return `<div class="card bg-primary text-white col-3">
-    <div class="card-header bg-primary">
-      <p>${data.getName()}</p>
-      <p>${data.getRole()}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">${data.getId()}</li>
-      <li class="list-group-item">${data.getEmail()}</li>
-      <li class="list-group-item">${data.getGithub()}</li>
-    </ul>
+        <div class="card-header bg-primary">
+            <p>${data.getName()}</p>
+            <p>${data.getRole()}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${data.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
+            <li class="list-group-item">GitHub: <a href="https://github.com/${data.getGithub()}">${data.getGithub()}</a></li>
+        </ul>
     </div>`
 }
 
 // html card for intern
 function internCard(data) {
     return `<div class="card bg-primary text-white col-3">
-    <div class="card-header bg-primary">
-      <p>${data.getName()}</p>
-      <p>${data.getRole()}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">${data.getId()}</li>
-      <li class="list-group-item">${data.getEmail()}</li>
-      <li class="list-group-item">${data.getSchool()}</li>
-    </ul>
+        <div class="card-header bg-primary">
+            <p>${data.getName()}</p>
+            <p>${data.getRole()}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${data.getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
+            <li class="list-group-item">School: ${data.getSchool()}</li>
+        </ul>
     </div>`
 }
 
