@@ -102,12 +102,13 @@ function managerPrompt() {
         .then(function generateManager(data) {
             const newManager = new Manager(data.name, data.id, data.email, data.office);
             managerArray.push(newManager);
-            console.log(teamArray);
+            console.log(managerArray);
             if (data.member === 'Engineer') {
                 engineerPrompt();
             } else if (data.member === 'Intern') {
                 internPrompt();
             } else {
+                console.log(teamArray);
                 renderHTML();
             }
         })
@@ -119,12 +120,13 @@ function engineerPrompt() {
         .then(function generateEngineer(data) {
             const newEngineer = new Engineer(data.name, data.id, data.email, data.github);
             engineerArray.push(newEngineer);
-            console.log(teamArray);
+            console.log(engineerArray);
             if (data.member === 'Engineer') {
                 engineerPrompt();
             } else if (data.member === 'Intern') {
                 internPrompt();
             } else {
+                console.log(teamArray);
                 renderHTML();
             }
         })
@@ -136,12 +138,13 @@ function internPrompt() {
         .then(function generateIntern(data) {
             const newIntern = new Intern(data.name, data.id, data.email, data.school);
             internArray.push(newIntern);
-            console.log(teamArray);
+            console.log(internArray);
             if (data.member === 'Engineer') {
                 engineerPrompt();
             } else if (data.member === 'Intern') {
                 internPrompt();
             } else {
+                console.log(teamArray);
                 renderHTML();
             }
         })
