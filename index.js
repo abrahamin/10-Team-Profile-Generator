@@ -229,7 +229,7 @@ function engineerCard(data) {
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID: ${data.getId()}</li>
                         <li class="list-group-item">Email: <a href="mailto:${data.getEmail()}">${data.getEmail()}</a></li>
-                        <li class="list-group-item">GitHub: <a href="https://github.com/${data.getGithub()}">${data.getGithub()}</a></li>
+                        <li class="list-group-item">GitHub: <a href="https://github.com/${data.getGithub()}" target="_blank">${data.getGithub()}</a></li>
                     </ul>
                 </div>
 `
